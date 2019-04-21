@@ -98,3 +98,54 @@ ReactDOM.render(
     </Router>,
     document.getElementById('app')
 );
+
+
+
+//HashRouter
+import React , {Component} from 'react';
+import ReactDOM from 'react-dom';
+import 'font-awesome/css/font-awesome.min.css'
+import {HashRouter as Router , Route , Link}   from 'react-router-dom';
+import './index.css';
+import './index.scss';
+
+
+
+class ComponentA extends Component{
+    render(){
+        return <div>组件A</div>
+    }
+}
+
+class ComponentB extends Component{
+    render(){
+        return <div>组件B</div>
+    }
+}
+
+class Wrapper extends Component{
+    constructor(props){
+        super(props);
+    }
+    render(){
+        return (
+            <div>
+                <Link to="/a">组件A</Link>
+                <br/>
+                <Link to="/b">组件B</Link>
+                {this.props.children}
+            </div>
+        )
+    }
+}
+
+
+ReactDOM.render(
+    <Router>
+        <Wrapper>
+            <Route path="/a" component={ComponentA}/>
+            <Route path="/b" component={ComponentB}/>
+        </Wrapper>
+    </Router>
+    , document.getElementById('app')
+);

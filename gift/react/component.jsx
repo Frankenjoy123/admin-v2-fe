@@ -60,6 +60,8 @@ class Component extends React.Component{
         }
         this.handleClick = this.handleClick.bind(this)
     }
+
+    // 箭头函数可以不用bind
     handleClick(){
         this.setState({
             age : this.state.age + 1
@@ -78,7 +80,7 @@ class Component extends React.Component{
 
 
 
-// 事件处理方式2
+// 事件处理方式2  箭头函数，不用bind
 class Component extends React.Component{
     constructor(props){
         super(props);
@@ -142,6 +144,8 @@ class Component extends React.Component{
     }
 }
 
+
+// 容器组件
 class Title extends React.Component{
     constructor(props){
         super(props);
@@ -170,6 +174,8 @@ class App extends React.Component{
 
 
 // 数据传递和状态提升
+// 子组件改变 父组件的状态
+// 子组件属性changeChild2Color方法  ，口子给父组件，父组件去实现
 class Child1 extends React.Component{
     constructor(props){
         super(props);
@@ -199,6 +205,8 @@ class Child2 extends React.Component{
     }
 }
 
+//父组件定义子组件changeChild2Color的 具体方法实现
+//(color) => {this.onChild2BgColorChange(color)}
 class Father extends React.Component{
     constructor(props){
         super(props);

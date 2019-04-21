@@ -1,15 +1,26 @@
-import React from 'react';
+import React , {Component} from 'react';
 import ReactDOM from 'react-dom';
-import 'font-awesome/css/font-awesome.min.css'
+import {HashRouter as Router , Route , Link , Switch, Redirect}   from 'react-router-dom';
 
-import './index.css';
-import './index.scss';
+import Home from 'page/home/index.jsx';
+import Layout from 'component/layout/index.jsx';
+
+class App extends Component{
+    render(){
+        return (
+            <Router>
+                <Layout>
+                    <Switch>
+                        <Route exact path="/" component={Home}/>
+                        <Redirect from="*" to="/"/>
+                    </Switch>
+                </Layout>
+            </Router>
+        )
+    }
+}
 
 ReactDOM.render(
-
-    <div>
-        <i class="fa fa-camera-retro"></i>
-        <h1>Hello, world</h1>
-    </div>,
-    document.getElementById('app')
+    <App/>
+    , document.getElementById('app')
 );

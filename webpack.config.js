@@ -10,6 +10,12 @@ module.exports = {
     publicPath: '/dist',
     filename: 'js/app.js'
   },
+  resolve: {
+      alias : {
+          page :        path.resolve(__dirname,'./src/page/'),
+          component :   path.resolve(__dirname,'./src/component/')
+      }
+  },
   module: {
       rules: [
         //react 文件处理
@@ -82,10 +88,13 @@ module.exports = {
         })
 
   ],
-
-    // webpack-dev server
+   // webpack-dev server
+   // historyApiFallback 404 页面位置
    devServer: {
-      port : 8086
+      port : 8086,
+      historyApiFallback : {
+          index : '/dist/index.html'
+      }
    }
 
 };
