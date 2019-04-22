@@ -8,5 +8,5 @@ yarn run dev
 
 ## production build
 ```
-yarn run disk
+yarn run dist
 ```
