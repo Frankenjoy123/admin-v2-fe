@@ -5,7 +5,7 @@ import './index.scss';
 import MUtil from '../../util/mm.jsx';
 import User from 'service/user-service.jsx';
 
-const _mm = new MUtil();
+const _mm   = new MUtil();
 const _user = new User();
 
 
@@ -16,8 +16,12 @@ export  default  class Login extends React.Component {
         this.state = {
             username : '',
             password : '',
-            redirect : _mm.getUrlParam('redirect') || '/'
+            redirect : _mm.getUrlParam("redirect") ||'/'
         }
+    }
+
+    componentWillMount(){
+        document.title = "login";
     }
 
     onInputChange(e) {
@@ -31,19 +35,38 @@ export  default  class Login extends React.Component {
         });
     }
 
+    onInputKeyup(e){
+        if(e.keyCode == 13){
+            this.onSubmit();
+        }
+    }
+
     onSubmit(){
 
-        _user.login(
-            {
-                username : this.state.username,
-                password : this.state.password
-            }
-        ).then( data => {
-            console.log(this.state.redirect);
-            // this.props.history.push(_mm.get(this.state.redirect));
-        }).catch( errMsg => {
+        // let redi = _mm.getUrlParam("redirect");
+
+        let userInfo ={
+            username : this.state.username,
+            password : this.state.password
+        };
+
+        let checkResult = _user.checkLoginInfo(userInfo);
+
+        if(checkResult.status){
+            _user.login(
+                {
+                    username : this.state.username,
+                    password : this.state.password
+                }
+            ).then( res => {
+                _mm.setKeyValue('userInfo',res);
+                this.props.history.push(this.state.redirect);
+            }, (errMsg) => {
                 _mm.errorTips(errMsg);
-        })
+            })
+        }else {
+            _mm.errorTips(checkResult.msg);
+        }
 
     }
 
@@ -66,6 +89,7 @@ export  default  class Login extends React.Component {
                                              name="username"
                                              className="form-control"
                                              placeholder="请输入用户名"
+                                             onKeyUp={(e) => this.onInputKeyup(e)}
                                              onChange={(e) => this.onInputChange(e)}/>
                                   </div>
                                   <div className="form-group">
@@ -73,6 +97,7 @@ export  default  class Login extends React.Component {
                                              name="password"
                                              className="form-control"
                                              placeholder="请输入密码"
+                                             onKeyUp={(e) => this.onInputKeyup(e)}
                                              onChange={(e) => this.onInputChange(e)}/>
                                   </div>
 

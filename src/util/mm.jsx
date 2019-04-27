@@ -32,14 +32,50 @@ class MUtil {
 
     getUrlParam(name) {
         //?redirect=%2fproduct%2findex
-        let queryString = window.location.search.split('?')[1] || '',
-            reg = new RegExp("^|&" + name + "=([^&]*)(&|$)");
+        let queryString = window.location.search.substr(1) || '';
+        let  reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
         let result = queryString.match(reg);
+        console.log(result);
         return result ? decodeURIComponent(result[2]) : '';
     }
 
     errorTips(errorMsg) {
 
+    }
+
+    setKeyValue(key , val){
+        let dataType = typeof val;
+        let storage = window.localStorage;
+        if(dataType === 'object'){
+            storage.setItem(key, JSON.stringify(val));
+        }
+
+        else if (['string','number','boolean'].indexOf(dataType)){
+            storage.setItem(key, val);
+        }
+
+        else {
+            alert('wrong');
+        }
+    }
+
+    getValue(key){
+        let storage = window.localStorage;
+
+        let data = storage.getItem(key);
+
+        if (data){
+            return JSON.parse(data);
+        }
+
+        else {
+            return '';
+        }
+    }
+
+    delele(key){
+        let storage = window.localStorage;
+        storage.removeItem(key);
     }
 }
 

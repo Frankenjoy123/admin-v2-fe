@@ -15,7 +15,7 @@ module.exports = {
           page :        path.resolve(__dirname,'./src/page/'),
           component :   path.resolve(__dirname,'./src/component/'),
           service :     path.resolve(__dirname,'./src/service/'),
-          util :     path.resolve(__dirname,'./src/util/'),
+          util :        path.resolve(__dirname,'./src/util/'),
       }
   },
   module: {
@@ -101,6 +101,10 @@ module.exports = {
 
       proxy : {
           '/manage' : {
+              target : 'http://adminv2.happymmall.com',
+              changeOrigin : true
+          },
+          '/user' : {
               target : 'http://adminv2.happymmall.com',
               changeOrigin : true
           }
