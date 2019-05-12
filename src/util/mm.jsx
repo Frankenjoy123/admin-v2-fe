@@ -13,7 +13,7 @@ class MUtil {
                     if (res.status === 0) {
                         typeof resolve === "function" && resolve(res.data, res.message);
                     } else if (res.status === 10) {
-                        doLogin();
+                        this.doLogin();
                     } else {
                         reject(res.message || res.data);
                     }
@@ -27,7 +27,7 @@ class MUtil {
     }
 
     doLogin() {
-        window.location.href = '/login';
+        window.location.href = '/login?redirect=' + encodeURIComponent(window.location.pathname);
     }
 
     getUrlParam(name) {
@@ -38,9 +38,13 @@ class MUtil {
         console.log(result);
         return result ? decodeURIComponent(result[2]) : '';
     }
-
-    errorTips(errorMsg) {
-
+    // 成功提示
+    successTips(successMsg){
+        alert(successMsg || '操作成功！');
+    }
+    // 错误提示
+    errorTips(errMsg){
+        alert(errMsg || '好像哪里不对了~');
     }
 
     setKeyValue(key , val){

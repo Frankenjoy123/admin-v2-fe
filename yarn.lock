@@ -1738,6 +1738,10 @@ domhandler@^2.3.0:
   dependencies:
     domelementtype "1"
 
+dompurify@^1.0.8:
+  version "1.0.10"
+  resolved "https://registry.npm.taobao.org/dompurify/download/dompurify-1.0.10.tgz#18d7353631c86ee25049e38fbca8c6b2c5a2af87"
+
 domutils@1.5.1:
   version "1.5.1"
   resolved "http://registry.npm.taobao.org/domutils/download/domutils-1.5.1.tgz#dcd8488a26f563d61079e48c9f7b7e32373682cf"
@@ -3011,6 +3015,18 @@ isomorphic-fetch@^2.1.1:
 isstream@~0.1.2:
   version "0.1.2"
   resolved "http://registry.npm.taobao.org/isstream/download/isstream-0.1.2.tgz#47e63f7af55afa6f92e1500e690eb8b8529c099a"
+
+jquery@2.x:
+  version "2.2.4"
+  resolved "https://registry.npm.taobao.org/jquery/download/jquery-2.2.4.tgz#2c89d6889b5eac522a7eea32c14521559c6cbf02"
+
+jquery@^3.0.0, jquery@^3.3.1:
+  version "3.4.1"
+  resolved "https://registry.npm.taobao.org/jquery/download/jquery-3.4.1.tgz#714f1f8d9dde4bdfa55764ba37ef214630d80ef2"
+
+jquery@~3.1.0:
+  version "3.1.1"
+  resolved "https://registry.npm.taobao.org/jquery/download/jquery-3.1.1.tgz#347c1c21c7e004115e0a4da32cece041fad3c8a3"
 
 js-base64@^2.1.8, js-base64@^2.1.9:
   version "2.5.1"
@@ -4869,6 +4885,42 @@ shebang-regex@^1.0.0:
 signal-exit@^3.0.0:
   version "3.0.2"
   resolved "http://registry.npm.taobao.org/signal-exit/download/signal-exit-3.0.2.tgz#b5fdc08f1287ea1178628e415e25132b73646c6d"
+
+simditor@^2.3.6:
+  version "2.3.25"
+  resolved "https://registry.npm.taobao.org/simditor/download/simditor-2.3.25.tgz#58fe71761b1d52f6dfc6bdc49a15513fa91173af"
+  dependencies:
+    dompurify "^1.0.8"
+    jquery "^3.3.1"
+    simple-hotkeys "^1.0.3"
+    simple-module "^3.0.3"
+    simple-uploader "^3.0.0"
+
+simple-hotkeys@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.npm.taobao.org/simple-hotkeys/download/simple-hotkeys-1.0.3.tgz#47a5bc35362ca7339611bd09a84fa37818b0bbc6"
+  dependencies:
+    jquery "2.x"
+    simple-module "~2.0.5"
+
+simple-module@^3.0.3, simple-module@~3.0.0:
+  version "3.0.3"
+  resolved "https://registry.npm.taobao.org/simple-module/download/simple-module-3.0.3.tgz#ad52766785d27cd9427ee8645a49e41199725a92"
+  dependencies:
+    jquery "^3.0.0"
+
+simple-module@~2.0.5:
+  version "2.0.6"
+  resolved "https://registry.npm.taobao.org/simple-module/download/simple-module-2.0.6.tgz#cec8250325f8c7f575f4aa75c919b38396a6037b"
+  dependencies:
+    jquery "2.x"
+
+simple-uploader@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.npm.taobao.org/simple-uploader/download/simple-uploader-3.0.0.tgz#c09f706f1cfcbea1fe780e35759a683b1336d4d1"
+  dependencies:
+    jquery "~3.1.0"
+    simple-module "~3.0.0"
 
 slash@^1.0.0:
   version "1.0.0"
